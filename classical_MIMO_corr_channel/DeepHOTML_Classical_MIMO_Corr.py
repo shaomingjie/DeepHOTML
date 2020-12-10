@@ -31,7 +31,6 @@ def generate_data_train_varychannel_QPSK( B,M,N,Rr_sqrt, Rt_sqrt, snr_low,snr_hi
     H_imag = np.random.randn(B, N, M)/np.sqrt(2)
     H_ray = H_real + 1j * H_imag
     H_com = np.matmul(np.matmul(Rr_sqrt, H_ray), Rt_sqrt)
-    # H_test = np.matmul(Rr_sqrt, np.matmul(H_ray[0, :, :], Rt_sqrt))
     H1 = np.concatenate([H_com.real, -H_com.imag], axis=2)
     H2 = np.concatenate([H_com.imag, H_com.real], axis=2)
     H = np.concatenate([H1, H2], axis=1)
